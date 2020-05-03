@@ -86,15 +86,21 @@ DB_USERNAME=laraveluser
 DB_PASSWORD=your_laravel_db_password
 ```
 
-
 ### Step12
+change permission for lumen project to access on it
+```
+sudo chown -R $USER:$USER lumen/yourprojectname
+```
+
+
+### Step13
 run docker compose command
 ```
 docker-compose up -d
 ```
 
 
-### Step13
+### Step14
 Creating a User for MySQL
 ```
 docker-compose exec db bash
@@ -120,11 +126,6 @@ FLUSH PRIVILEGES;
 ```
 and exit from mysql and container mysql
 
-### Step14
-change permission for lumen project to access on it
-```
-sudo chown -R $USER:$USER lumen/yourprojectname
-```
 
 ### Step15
 You can Migrate your laravel with following command
