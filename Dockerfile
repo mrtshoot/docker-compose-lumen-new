@@ -1,7 +1,7 @@
 FROM localhub.etod.me/php:7.2-fpm
 
 # Copy composer.lock and composer.json
-COPY ./lumen-app/yourprojectdir/composer.lock ./lumen-app/yourprojectdir/composer.json /var/www/
+COPY ./lumen-app/yourprojectname/composer.lock ./lumen-app/yourprojectname/composer.json /var/www/
 
 # Set working directory
 WORKDIR /var/www
@@ -36,10 +36,10 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
-COPY ./lumen-app/yourprojectdir /var/www
+COPY ./lumen-app/yourprojectname /var/www
 
 # Copy existing application directory permissions
-COPY --chown=www:www ./lumen-app/yourprojectdir /var/www
+COPY --chown=www:www ./lumen-app/yourprojectname /var/www
 
 # Change current user to www
 USER www
