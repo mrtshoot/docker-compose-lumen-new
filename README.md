@@ -53,7 +53,7 @@ cp .composer.json lumen-app/
 ### Step8
 Install composer
 ```
-cd lumen-app;docker run --rm -v $(pwd):/app localhub.etod.me/composer install;cd ..
+cd lumen-app;docker run --rm -v $(pwd):/app composer install;cd ..
 ```
 if you have local repo run following command
 ```
@@ -67,7 +67,7 @@ Change your docker images with your local repository if you needed.
 ### Step10
 create lumen project
 ```
-cd lumen-app;docker run --rm -v $(pwd):/app localhub.etod.me/composer create-project --prefer-dist laravel/lumen yourprojectname
+cd lumen-app;docker run --rm -v $(pwd):/app composer create-project --prefer-dist laravel/lumen yourprojectname
 ```
 
 ### Step11
