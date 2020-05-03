@@ -1,0 +1,79 @@
+---
+version: '3'
+services:
+
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: localhub.etod.me/otezvikentiy/php7.2-fpm:0.0.13
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    env_file:
+      - ./.env/php.env
+    working_dir: /var/www
+    networks: 
+      - app-network
+    volumes:
+      - ./lumen-app/yourprojectdir:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+  
+  #Nginx Service
+  webserver:
+    image: localhub.etod.me/nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app-network
+    volumes:
+      - ./lumen-app/yourprojectdir:/var/www
+      - ./nginx/conf.d:/etc/nginx/conf.d/
+      - ./nginx/log:/var/log/nginx
+      
+    
+  #MySQL Service
+  db:
+    image: localhub.etod.me/mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./.env/db.env
+    networks:
+      - app-network
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+
+  #PHPMyAdmin
+  phpmyadmin:
+    image: localhub.etod.me/phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - "10080:80"
+    env_file:
+      - ./.env/phpmyadmin.env
+    restart: unless-stopped
+    networks:
+      - app-network
+      
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.29.17.0/24
+
+volumes:
+  dbdata:
+    driver: local

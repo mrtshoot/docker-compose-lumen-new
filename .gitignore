@@ -1,0 +1,9 @@
+lumen-app/
+/.env/db.env
+/.env/php.env
+/.env/phpmyadmin.env
+/mysql/my.cnf
+/nginx/conf.d/app.conf
+/nginx/log
+/php/local.ini
+!*.example/
