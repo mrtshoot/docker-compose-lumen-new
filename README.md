@@ -47,7 +47,7 @@ mkdir lumen-app
 ### Step7
 copy composer.json file to install composer on docker
 ```
-cp .composer.json lumen-app/
+cp .composer.json lumen-app/composer.json
 ```
 
 ### Step8
