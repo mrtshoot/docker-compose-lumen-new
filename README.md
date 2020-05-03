@@ -89,7 +89,7 @@ DB_PASSWORD=your_laravel_db_password
 ### Step12
 change permission for lumen project to access on it
 ```
-sudo chown -R $USER:$USER lumen/yourprojectname
+sudo chown -R $USER:$USER lumen-app/yourprojectname
 ```
 
 
