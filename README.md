@@ -58,7 +58,7 @@ cd lumen-app/yourprojectname;docker run --rm -v $(pwd):/app YOUR_PRIVATE_REGISTR
 Change your docker images with your local repository if you needed.
 
 
-#### Notice ()
+#### Notice
 if you need create project you should follow this.otherwise skip this.
 ```
 cd lumen-app;docker run --rm -v $(pwd):/app composer create-project --prefer-dist laravel/lumen yourprojectname
