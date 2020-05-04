@@ -38,34 +38,28 @@ set your project name to configure files and folder
 sed -i 's/yourprojectname/ENTER_YOUR_NAME_HERE/g' docker-compose.yml Dockerfile
 ```
 
-### Step6
-create your lumen directory project 
-```
-mkdir lumen-app
-```
-
 ### Step7
-copy composer.json file to install composer on docker
+create your lumen directory project and clone developer lumen project.if you dont have any project you should create it with this link https://lumen.laravel.com/docs/6.x
 ```
-cp .composer.json lumen-app/composer.json
+mkdir lumen-app;git clone <Repo URL> <yourprojectname>
 ```
 
 ### Step8
 Install composer
 ```
-cd lumen-app;docker run --rm -v $(pwd):/app composer install;cd ..
+cd lumen-app/yourprojectname;docker run --rm -v $(pwd):/app composer install;cd ../..
 ```
 if you have local repo run following command
 ```
-cd lumen-app;docker run --rm -v $(pwd):/app YOUR_PRIVATE_REGISTRY_URL/composer install;cd ..
+cd lumen-app/yourprojectname;docker run --rm -v $(pwd):/app YOUR_PRIVATE_REGISTRY_URL/composer install;cd ../..
 ```
 
 ### Step9 (Optional)
 Change your docker images with your local repository if you needed.
 
 
-### Step10
-create lumen project
+#### Notice ()
+if you need create project you should follow this.otherwise skip this.
 ```
 cd lumen-app;docker run --rm -v $(pwd):/app composer create-project --prefer-dist laravel/lumen yourprojectname
 ```
@@ -89,14 +83,14 @@ DB_PASSWORD=your_laravel_db_password
 ### Step12
 change permission for lumen project to access on it
 ```
-sudo chown -R $USER:$USER lumen-app/yourprojectname
+sudo chown -R $USER:$USER lumen-app/
 ```
 
 
 ### Step13
 run docker compose command
 ```
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 
