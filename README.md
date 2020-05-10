@@ -41,7 +41,7 @@ sed -i 's/yourprojectname/ENTER_YOUR_NAME_HERE/g' docker-compose.yml Dockerfile
 ### Step7
 create your lumen directory project and clone developer lumen project.if you dont have any project you should create it with this link https://lumen.laravel.com/docs/6.x
 ```
-mkdir lumen-app;git clone <Repo URL> <yourprojectname>
+mkdir lumen-app;cd lumen-app;git clone <Repo URL> <yourprojectname>
 ```
 
 ### Step8
