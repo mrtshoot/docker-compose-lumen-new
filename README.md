@@ -47,7 +47,7 @@ mkdir lumen-app;cd lumen-app;git clone <Repo URL> <yourprojectname>
 ### Step8
 Install composer
 ```
-cd lumen-app/yourprojectname;docker run --rm -v $(pwd):/app composer install;cd ../..
+cd yourprojectname;docker run --rm -v $(pwd):/app composer install;cd ../..
 ```
 if you have local repo run following command
 ```
