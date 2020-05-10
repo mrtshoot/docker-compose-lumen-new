@@ -51,7 +51,7 @@ cd yourprojectname;docker run --rm -v $(pwd):/app composer install;cd ../..
 ```
 if you have local repo run following command
 ```
-cd lumen-app/yourprojectname;docker run --rm -v $(pwd):/app YOUR_PRIVATE_REGISTRY_URL/composer install;cd ../..
+cd yourprojectname;docker run --rm -v $(pwd):/app YOUR_PRIVATE_REGISTRY_URL/composer install;cd ../..
 ```
 
 ### Step9 (Optional)
