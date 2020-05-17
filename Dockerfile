@@ -44,6 +44,11 @@ COPY ./lumen-app/yourprojectname /var/www
 # Copy existing application directory permissions
 COPY --chown=www:www ./lumen-app/yourprojectname /var/www
 
+#Add SSH Server and Requirements
+RUN apt update && apt install openssh-server -y
+RUN mkdir /home/www/.ssh
+RUN chown -R www:www /home/www/.ssh
+
 # Change current user to www
 USER www
 
