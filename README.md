@@ -141,21 +141,3 @@ You can Migrate your laravel with following command
 docker-compose exec app php artisan migrate
 ```
 
-### Step16
-Add developer ssh public key to authorized_keys
-1. copy from example of authorized key
-```
-cp ssh_accounts/.authorized_keys.example ssh_accounts/authorized_keys
-```
-
-2. copy from ssh config sample
-```
-cp ssh_accounts/.sshd_config.example ssh_accounts/sshd_config
-```
-
-3. change sshd_config file base on your need such as add users bla bla bla
-
-4. restart sshd services
-```
-docker-compose exec -u root app service ssh restart
-```
