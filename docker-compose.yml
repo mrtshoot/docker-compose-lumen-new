@@ -19,6 +19,10 @@ services:
     volumes:
       - ./lumen-app/yourprojectname:/var/www
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - /etc/hosts:/etc/hosts:ro
+      - ./ssh_accounts/authorized_keys:/home/www/.ssh/authorized_keys:ro
+      - ./ssh_accounts/sshd_config:/etc/ssh/sshd_config:ro
+      - /etc/ssh/banner.txt:/etc/ssh/banner.txt:ro      
   
   #Nginx Service
   webserver:
