@@ -93,7 +93,9 @@ Set hostname for php app on docker-compose file if you needed.
 Configure SSH Access to PHP Application for Developers
 ```
 1. Change SSH port to your own random port in docker-compose 
-2. Input developer ssh public key at the end of ssh_accounts/authorized_keys with specific comment for example name and family
+2. Copy example ssh configuration file and change it base on yourself
+   cp ssh_accounts/.sshd_config.example ssh_accounts/sshd_config;cp ssh_accounts/.authorized_keys.example ssh_accounts/authorized_keys
+3. Input developer ssh public key at the end of ssh_accounts/authorized_keys with specific comment for example name and family
 ```
 
 ### Step15
