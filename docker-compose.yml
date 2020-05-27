@@ -18,6 +18,7 @@ services:
       - app-network
     volumes:
       - ./lumen-app/yourprojectname:/var/www
+      - ./lumen-app/yourprojectname/composer.json:/home/www/.composer/composer.json
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - /etc/hosts:/etc/hosts:ro
       - ./ssh_accounts/authorized_keys:/home/www/.ssh/authorized_keys:ro
