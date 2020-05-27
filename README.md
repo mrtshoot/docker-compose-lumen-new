@@ -64,7 +64,7 @@ if you need create project you should follow this.otherwise skip this.
 cd lumen-app;docker run --rm -v $(pwd):/app composer create-project --prefer-dist laravel/lumen yourprojectname
 ```
 
-### Step11
+### Step10
 change environment variable for lumen with following configuration
 ```
 cp lumen-app/yourprojectname/.env.example lumen-app/yourprojectname/.env
@@ -80,16 +80,16 @@ DB_USERNAME=laraveluser
 DB_PASSWORD=your_laravel_db_password
 ```
 
-### Step12
+### Step11
 change permission for lumen project to access on it
 ```
 sudo chown -R $USER:$USER lumen-app/
 ```
 
-### Step13
+### Step12
 Set hostname for php app on docker-compose file if you needed.
 
-### Step14
+### Step13
 Configure SSH Access to PHP Application for Developers
 1. Change SSH port to your own random port in docker-compose 
 2. Copy example ssh configuration file and change it base on yourself
@@ -99,19 +99,19 @@ cp ssh_accounts/.sshd_config.example ssh_accounts/sshd_config;cp ssh_accounts/.a
 3. Input developer ssh public key at the end of ssh_accounts/authorized_keys with specific comment for example name and family
 
 
-### Step15
+### Step14
 run docker compose command
 ```
 docker-compose up -d --build
 ```
 
-### Step16
+### Step15
 Restart ssh service for php app
 ```
 docker-compose exec -u root app service ssh restart
 ```
 
-### Step17
+### Step16
 Creating a User for MySQL
 ```
 docker-compose exec db bash
@@ -138,7 +138,7 @@ FLUSH PRIVILEGES;
 and exit from mysql and container mysql
 
 
-### Step18
+### Step17
 You can Migrate your laravel with following command
 ```
 docker-compose exec app php artisan migrate
