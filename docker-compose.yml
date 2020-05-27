@@ -16,6 +16,8 @@ services:
     working_dir: /var/www
     networks: 
       - app-network
+    ports:
+      - "2222:22"
     volumes:
       - ./lumen-app/yourprojectname:/var/www
       - ./lumen-app/yourprojectname/composer.json:/home/www/.composer/composer.json
