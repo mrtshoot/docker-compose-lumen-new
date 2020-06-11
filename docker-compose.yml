@@ -34,8 +34,8 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80"
-      - "443:443"
+      - "8081:80"
+      - "4443:443"
     networks:
       - app-network
     volumes:
@@ -51,7 +51,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3306:3306"
     env_file:
       - ./.env/db.env
     networks:
