@@ -22,9 +22,10 @@ cp php/.local.ini.example php/local.ini
 ```
 
 ### Step4
-cp your app.conf nginx configuration file for server proxy and add your setting.
+cp your app.conf and pma.conf nginx configuration file for server proxy and PMA web pannel and add your setting.notice that check your whitelist ip on pma.conf
 ```
 cp nginx/conf.d/.app.conf.example nginx/conf.d/app.conf
+cp nginx/conf.d/.pma.conf.example nginx/conf.d/pma.conf
 ```
 ### Step5
 cp your mysql configuration file
