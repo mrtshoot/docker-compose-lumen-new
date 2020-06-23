@@ -5,8 +5,8 @@ server {
     }
     location / {
       allow 81.12.36.200/29;
-      allow 209.51.211.241;
-      allow 80.210.32.51;
+      allow 209.51.211.241/32;
+      allow 80.210.32.51/32;
       deny all;
       proxy_pass http://phpmyadmin;
     }
