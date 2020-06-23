@@ -36,6 +36,7 @@ services:
     ports:
       - "8081:80"
       - "4443:443"
+      - "8082:8082"
     networks:
       - app-network
     volumes:
@@ -67,7 +68,7 @@ services:
     depends_on:
       - db
     ports:
-      - "10080:80"
+      - "127.0.0.1:10080:80"
     env_file:
       - ./.env/phpmyadmin.env
     restart: unless-stopped
