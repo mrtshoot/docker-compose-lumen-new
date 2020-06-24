@@ -37,7 +37,7 @@ cp mysql/.my.cnf.example mysql/my.cnf
 set your project name to configure files and folder
 ```
 sed -i 's/yourprojectname/ENTER_YOUR_NAME_HERE/g' docker-compose.yml Dockerfile compose-down-up.sh supervisor/conf.d/.yourprojectname-worker.conf.example
-mv supervisor/conf.d/.yourprojectname-worker.conf.example supervisor/conf.d/ENTER_YOUR_PROJECT_NAME_HERE.conf
+mv supervisor/conf.d/.yourprojectname-worker.conf.example supervisor/conf.d/ENTER_YOUR_PROJECT_NAME_HERE-worker.conf
 ```
 
 ### Step7
