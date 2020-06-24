@@ -36,16 +36,21 @@ cp mysql/.my.cnf.example mysql/my.cnf
 ### Step6
 set your project name to configure files and folder
 ```
-sed -i 's/yourprojectname/ENTER_YOUR_NAME_HERE/g' docker-compose.yml Dockerfile
+sed -i 's/yourprojectname/ENTER_YOUR_NAME_HERE/g' docker-compose.yml Dockerfile compose-down-up.sh supervisor/conf.d/.yourprojectname-worker.conf.example
+mv supervisor/conf.d/.yourprojectname-worker.conf.example supervisor/conf.d/ENTER_YOUR_PROJECT_NAME_HERE.conf
 ```
 
 ### Step7
+Change your Supervisor Configuration with your own config by default it has 4 numprocs
+
+
+### Step8
 create your lumen directory project and clone developer lumen project.if you dont have any project you should create it with this link https://lumen.laravel.com/docs/6.x
 ```
 mkdir lumen-app;cd lumen-app;git clone <Repo URL> <yourprojectname>
 ```
 
-### Step8
+### Step9
 Install composer
 ```
 cd yourprojectname;docker run --rm -v $(pwd):/app composer install;cd ../..
@@ -55,7 +60,7 @@ if you have local repo run following command
 cd yourprojectname;docker run --rm -v $(pwd):/app YOUR_PRIVATE_REGISTRY_URL/composer install;cd ../..
 ```
 
-### Step9 (Optional)
+### Step10 (Optional)
 Change your docker images with your local repository if you needed.
 
 
@@ -65,7 +70,7 @@ if you need create project you should follow this.otherwise skip this.
 cd lumen-app;docker run --rm -v $(pwd):/app composer create-project --prefer-dist laravel/lumen yourprojectname
 ```
 
-### Step10
+### Step11
 change environment variable for lumen with following configuration
 ```
 cp lumen-app/yourprojectname/.env.example lumen-app/yourprojectname/.env
@@ -81,16 +86,16 @@ DB_USERNAME=laraveluser
 DB_PASSWORD=your_laravel_db_password
 ```
 
-### Step11
+### Step12
 change permission for lumen project to access on it
 ```
 sudo chown -R $USER:$USER lumen-app/
 ```
 
-### Step12
+### Step13
 Set hostname for php app on docker-compose file if you needed.
 
-### Step13
+### Step14
 Configure SSH Access to PHP Application for Developers
 1. Change SSH port to your own random port in docker-compose 
 2. Copy example ssh configuration file and change it base on yourself
@@ -100,19 +105,23 @@ cp ssh_accounts/.sshd_config.example ssh_accounts/sshd_config;cp ssh_accounts/.a
 3. Input developer ssh public key at the end of ssh_accounts/authorized_keys with specific comment for example name and family
 
 
-### Step14
+### Step15
 run docker compose command
 ```
 docker-compose up -d --build
 ```
 
-### Step15
-Restart ssh service for php app
+### Step16
+Restart ssh and supervisor service and start it for php app
 ```
 docker-compose exec -u root app service ssh restart
+docker-compose exec -u root app service supervisor start
+docker-compose exec -u root app supervisorctl reread
+docker-compose exec -u root app supervisorctl update
+docker-compose exec -u root app supervisorctl start yourprojectname-worker:*
 ```
 
-### Step16
+### Step17
 Creating a User for MySQL
 ```
 docker-compose exec db bash
@@ -139,9 +148,14 @@ FLUSH PRIVILEGES;
 and exit from mysql and container mysql
 
 
-### Step17
+### Step18
 You can Migrate your laravel with following command
 ```
 docker-compose exec app php artisan migrate
 ```
 
+### Step19
+if you need build and down and up docker-compose just run script on root directory
+```
+bash compose-down-up.sh
+```
