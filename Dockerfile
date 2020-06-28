@@ -44,9 +44,10 @@ COPY --chown=www:www ./lumen-app/yourprojectname /var/www
 
 #Add SSH Server and Requirements
 RUN apt update && apt install openssh-server -y
-RUN mkdir /home/www/.ssh
-RUN chown -R www:www /home/www/.ssh
-RUN mkdir /home/www/.composer && chown -R www:www /home/www/.composer
+
+#Create SSH and Composer Directories
+RUN mkdir /home/www/.ssh /home/www/.composer
+RUN chown -R www:www /home/www/
 
 # Change current user to www
 USER www

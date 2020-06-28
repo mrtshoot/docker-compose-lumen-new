@@ -159,3 +159,9 @@ if you need build and down and up docker-compose just run script on root directo
 ```
 bash compose-down-up.sh
 ```
+
+### Step20
+if you need update composer that has been installed with above command docker run you should run following
+```
+docker-compose exec app composer update -vvv
+```

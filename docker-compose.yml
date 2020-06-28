@@ -27,6 +27,7 @@ services:
       - ./ssh_accounts/sshd_config:/etc/ssh/sshd_config:ro
       - /etc/ssh/banner.txt:/etc/ssh/banner.txt:ro
       - ./supervisor:/etc/supervisor
+      - ./composer_cache:/home/www/.composer/cache
   
   #Nginx Service
   webserver:
