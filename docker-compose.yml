@@ -7,7 +7,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: localhub.etod.me/otezvikentiy/php7.2-fpm:0.0.13
     container_name: app
     restart: unless-stopped
     tty: true
