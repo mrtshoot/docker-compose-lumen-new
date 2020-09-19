@@ -4,7 +4,7 @@ this repository provide lumen infrastructure with docker compose orchestrator
 ### Step1
 go to /opt and clone this repository
 ```
-cd /opt;git clone http://git.mobtaker.local/mobtaker/docker-compose-lumen.git
+cd /opt;git clone git@git.mobtakerteam.com:devops/docker-compose-lumen.git
 ```
 
 ### Step2
